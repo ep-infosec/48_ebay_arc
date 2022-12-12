@@ -1,0 +1,33 @@
+{
+  "name": "arc",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "lerna bootstrap --hoist --no-ci",
+    "test": "nyc mocha packages/arc-*/test* --timeout=30000",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov"
+  },
+  "author": "Michael Rawlings <ml.rawlings@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "codecov": "^3.0.0",
+    "lerna": "^3.0.5",
+    "memory-fs": "^0.4.1",
+    "mocha": "^10.0.0",
+    "nyc": "^15.1.0"
+  },
+  "nyc": {
+    "exclude": [
+      "**/test.js",
+      "**/test/**",
+      "**/coverage/**",
+      "**/.cache/**",
+      "packages/example-*"
+    ],
+    "cache": true,
+    "all": true
+  }
+}
